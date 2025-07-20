@@ -1,6 +1,7 @@
 package main
 
 import (
+	"container/list"
 	"fmt"
 	"reflect"
 )
@@ -11,7 +12,8 @@ func main(){
 	// show_messages()
 	// data_type_operation()
 	// arrays_data_strcture()
-	map_sintaxis()
+	// map_sintaxis()
+	list_sintaxis()
 }
 
 
@@ -91,4 +93,18 @@ func map_sintaxis(){
 	var map_by_structure = map[string]int{"a":10,"b":30,"c":2}
 
 	fmt.Println("map by crating its structure: ", map_by_structure)
+}
+
+
+func list_sintaxis(){
+	fmt.Println("--- lists ---")
+	var myList = list.New() //lists also works as a set
+	fmt.Println("empty list :  ", myList) //is necesary to use value to acces to the values of the list
+
+	myList.PushBack(1)
+	myList.PushBack(2)
+	myList.PushBack(3)
+
+	fmt.Println(myList.Back().Value)
+
 }
