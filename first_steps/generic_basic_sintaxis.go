@@ -13,7 +13,12 @@ func main(){
 	// data_type_operation()
 	// arrays_data_strcture()
 	// map_sintaxis()
-	list_sintaxis()
+	// list_sintaxis()
+
+	fmt.Println("---stuct ---")
+	var my_instance MyStruct = MyStruct{"serch",24}
+
+	my_instance.print_propeties()
 }
 
 
@@ -107,4 +112,13 @@ func list_sintaxis(){
 
 	fmt.Println(myList.Back().Value)
 
+}
+
+//struct (similar to classes but they are not classes)
+type MyStruct struct {
+	name string
+	age int
+}
+func (p MyStruct)print_propeties(){
+	fmt.Print("name: ", p.name, "\n age: ", p.age)
 }
