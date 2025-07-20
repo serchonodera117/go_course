@@ -83,8 +83,12 @@ func map_sintaxis(){
 
 	if(myMap[key_to_look_for]==0) {
 		fmt.Println(key_to_look_for, " was not found")
-		return
+		// return
+	}else {
+		fmt.Println("value of [ ",key_to_look_for," ] is:", myMap[key_to_look_for])
 	}
 
-	fmt.Println("value of [ ",key_to_look_for," ] is:", myMap[key_to_look_for])
+	var map_by_structure = map[string]int{"a":10,"b":30,"c":2}
+
+	fmt.Println("map by crating its structure: ", map_by_structure)
 }
