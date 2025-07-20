@@ -11,13 +11,11 @@ func main (){
 	
 
 	get_num(&a)
-	
 	fmt.Println(word_print, "\n\n Number: ", a, " will be multioied by the number you write: ")
 	fmt.Scan(&b)
-
 	multiply_num_by(&a, b)
-
 	fmt.Println("Result is: ", a)
+
 }
 
 func get_num(num *int) {
