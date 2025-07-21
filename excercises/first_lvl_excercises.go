@@ -2,14 +2,22 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"os/exec"
 )
 
 func main(){
 	fmt.Print("--- BASIC EXCERCISES ---")
 
-	first_excercise()
+	// first_excercise()
+	map_crud()
 }
 
+func clear_console(){
+	cmd := exec.Command("clear")
+	cmd.Stdout = os.Stdin
+	cmd.Run()
+}
 
 // First Excexise 
 func first_excercise(){
@@ -56,4 +64,97 @@ func array_sum(arr []int ) int{
 		x+=value
 	}
 	return x
+}
+
+
+
+//--------- SECOND EXCERCISE -----------------------------------------
+func map_crud(){
+	var myMap = make(map[int]string)
+	var size int
+
+	fmt.Print("how many objects do you want to introduce? : ")
+	fmt.Scan(&size)
+
+	for i := 0; i < size; i++ {
+		var myValue string
+		fmt.Println("Introduce the value to element [",i,"]")
+		fmt.Scan(&myValue)
+		myMap[i] = myValue
+	}
+	
+	var code_actions string
+	
+	for code_actions != "q" && code_actions != "Q"{
+		fmt.Print("This is the map: ", myMap, "\n\n\n")
+		
+		fmt.Println("----ACTIONS----")
+		fmt.Print("1.- add \n 2.-delete \n 3.-edit \n Q or q to quit \nwrite here: ")
+		fmt.Scan(&code_actions)
+
+		switch code_actions{
+			case "1": add_to_map(&myMap)
+			case "2": delete_from_map(&myMap)
+			case "3": edit_from_map(&myMap)
+			case "Q", "q": 
+				fmt.Print("you have chosen to get out. :) ")	
+			default:
+				fmt.Print(code_actions," is an invalid code")	
+		}
+	}
+	
+}
+func add_to_map(theMap *map[int]string){
+	clear_console()
+	fmt.Println("----ADD----")
+	var myvalue string
+	var index int = len(*theMap)
+
+	fmt.Println("ad value to element ", index ,"your map: ")
+	fmt.Scan(&myvalue)
+	
+	(*theMap)[index] = myvalue
+}
+
+func delete_from_map(theMap *map[int]string){
+	clear_console()
+	var key_map int 
+
+	fmt.Println("----DELETE----")
+	fmt.Println("this is your map: ", *theMap)
+	fmt.Println("Write the key you wnat to delete")
+	fmt.Scan(&key_map)
+
+	if _, ok:=(*theMap)[key_map]; !ok {
+		fmt.Println("key: ", key_map, " not found, going back. . . ")
+		return
+	}
+
+	fmt.Println("Deleted: ", key_map, ":", (*theMap)[key_map])
+	delete(*theMap, key_map)
+}
+
+func edit_from_map(theMap *map[int]string){
+	clear_console()
+	var key_map int
+	var newVal string
+
+	fmt.Println("----EDIT----")
+	fmt.Println("this is your map: ", *theMap)
+
+	fmt.Println("chose the key you wnat to edit")
+	fmt.Scan(&key_map)
+
+	if _, ok:= (*theMap)[key_map]; !ok {
+		fmt.Println("key: ", key_map, " does not exist, returning . . .")
+		return
+	}
+
+	fmt.Println("key: ", key_map," current value: ", (*theMap)[key_map])
+	fmt.Print(key_map, " new value:" )
+	fmt.Scan(&newVal)
+
+	(*theMap)[key_map] = newVal
+
+	fmt.Println("succesfully changed")
 }
