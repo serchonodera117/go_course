@@ -10,7 +10,8 @@ func main(){
 	fmt.Print("--- BASIC EXCERCISES ---")
 
 	// first_excercise()
-	map_crud()
+	// map_crud()
+	fizz_buzz()
 }
 
 func clear_console(){
@@ -157,4 +158,17 @@ func edit_from_map(theMap *map[int]string){
 	(*theMap)[key_map] = newVal
 
 	fmt.Println("succesfully changed")
+}
+
+
+// FIZZ BUZZ
+func fizz_buzz(){
+	fmt.Println("----FIZZ BUuzz----")
+	for i:= 1; i < 11; i++ {
+		if( i%2 ==0){
+			fmt.Println(i,": fizz")
+		}else {
+			fmt.Println(i,": buzz")
+		}
+	}
 }
