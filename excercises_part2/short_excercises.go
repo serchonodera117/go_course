@@ -15,7 +15,10 @@ func main(){
 // 	fmt.Print("num: ", mynum)
 // 	factorial(&mynum)
 // 	fmt.Print(" factorial ", mynum)
-	fibonacchi(10)
+	// fibonacchi(10)
+
+	// fmt.Printf("fibonacchi: %d", fibonacchi_recursion(6))
+	print_prime_numbers(20)
 }
 
 
@@ -68,5 +71,30 @@ func fibonacchi(n int){
 		b = c
 		
 		fmt.Printf("Index: %d, Value: %d  \n", i,b)
+	}
+}
+
+func fibonacchi_recursion(n int) int {
+	if n<= 1 {return n}
+
+	return fibonacchi_recursion(n-1) + fibonacchi_recursion(n-2)
+}
+
+
+
+func print_prime_numbers(n int){
+	fmt.Println("prime numbers")
+	for i:=2; i< n; i++ {
+		
+		var is_prime bool = true
+		for j :=2;  j < i; j++ {
+			if(i%j == 0){
+				is_prime = false
+			}
+		}
+		
+		if is_prime {
+			fmt.Println("prime: ", i)
+		}
 	}
 }
