@@ -18,7 +18,6 @@ func main(){
 
 	//excersise 4
 	// turn_server_on()
-
 }
 
 //Number one: declare a struct employee, fill up and iterate to receive its values
