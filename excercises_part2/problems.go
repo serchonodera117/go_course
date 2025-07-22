@@ -17,7 +17,8 @@ func main(){
 	// execute_excercise_3_chanel()
 
 	//excersise 4
-	turn_server_on()
+	// turn_server_on()
+
 }
 
 //Number one: declare a struct employee, fill up and iterate to receive its values
@@ -82,6 +83,8 @@ func worker (ch chan string){
 }
 
 
+//---------------- excercise 4
+
 func execute_excercise_4(w http.ResponseWriter, r *http.Request){
 	response:= map[string]string{"message":"hello, world"}
 	
@@ -95,3 +98,4 @@ func turn_server_on(){
 	http.ListenAndServe(":8080", nil)
 
 }
+
