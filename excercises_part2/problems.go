@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"sync"
+	"encoding/json"
+	"net/http"
 )
 
 
@@ -12,7 +14,10 @@ func main(){
 	// execute_excercise_1()
 	// execute_excercise_2([]string{"hola", "hola", "perro", "oso", "panda", "panda", "hola"})
 	// execute_excercise_3_multiple_goroutines(3)
-	execute_excercise_3_chanel()
+	// execute_excercise_3_chanel()
+
+	//excersise 4
+	turn_server_on()
 }
 
 //Number one: declare a struct employee, fill up and iterate to receive its values
@@ -74,4 +79,19 @@ func execute_excercise_3_chanel(){
 }
 func worker (ch chan string){
 	ch <- "work ended"
+}
+
+
+func execute_excercise_4(w http.ResponseWriter, r *http.Request){
+	response:= map[string]string{"message":"hello, world"}
+	
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(response)
+}
+
+func turn_server_on(){
+
+	http.HandleFunc("/hello" , execute_excercise_4)
+	http.ListenAndServe(":8080", nil)
+
 }
