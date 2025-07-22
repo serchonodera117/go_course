@@ -55,6 +55,9 @@ func read_file(){
 
 	var tempPerson Persona
 	err = json.Unmarshal(byteValue, &tempPerson)
+		if err!= nil{
+		panic(err)
+	}
 
 	fmt.Printf("Name: %s, Age: %d, Email: %s", tempPerson.Name, tempPerson.Age, tempPerson.Email)
 }
