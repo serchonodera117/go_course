@@ -5,6 +5,7 @@ import (
 	"sync"
 	"encoding/json"
 	"net/http"
+	""
 )
 
 
@@ -18,6 +19,7 @@ func main(){
 
 	//excersise 4
 	// turn_server_on()
+	
 }
 
 //Number one: declare a struct employee, fill up and iterate to receive its values
@@ -92,7 +94,6 @@ func execute_excercise_4(w http.ResponseWriter, r *http.Request){
 }
 
 func turn_server_on(){
-
 	http.HandleFunc("/hello" , execute_excercise_4)
 	http.ListenAndServe(":8080", nil)
 
