@@ -1,11 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io"
 	"os"
 	"os/exec"
+	"strings"
 	"time"
 
 	// "io"
@@ -91,6 +93,37 @@ func http_request_get_code_json(){
 
 	fmt.Println("Name: [", myPerson.Name, "] age: [", myPerson.Age,   "] how many of them exist?: [", myPerson.Count,"]")
 }
+
+func post_simulation(){
+	data:= map[string]string{
+		"usenrbane":"gopher",
+		"email":"gopher@example.com"
+	}
+
+	jsonData, err := json.Marshal(data)
+	if err!= nil{
+		panic(err)
+	}
+	
+	resp, err:=http.Post(
+		"url",
+		"application/json",
+		bytes.NewBuffer(jsonData)
+	)
+	
+
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("status code: ", resp.StatusCode)
+	fmt.Println("Response body: ", string(body))
+
+}
+
 
 type Persona struct{
 	Count int `json: "count"`
